@@ -70,7 +70,7 @@
       <div class="mentor-card">
         <img src="images/alma.jpeg" alt="Almarat Arnu's photo" />
         <div class="mentor-details">
-          <h3>Almarat Arnu</h3>
+          <h3>Coach 0: Almarat Arnu</h3>
           <p><strong>Years of Experience:</strong> 10</p>
           <p><strong>Type of Business:</strong> Technology</p>
           <p><strong>Occupations Held:</strong> CEO, Software Engineer</p>
@@ -81,7 +81,7 @@
       <div class="mentor-card">
         <img src="images/jane.jpeg" alt="Jane Smith's photo" />
         <div class="mentor-details">
-          <h3>Jane Smith</h3>
+          <h3>Coach 1: Jane Smith</h3>
           <p><strong>Years of Experience:</strong> 8</p>
           <p><strong>Type of Business:</strong> Hospital</p>
           <p><strong>Occupations Held:</strong> Sales</p>
@@ -92,75 +92,125 @@
       <div class="mentor-card">
         <img src="images/kaka.jpeg" alt="Kaka Alamin's photo" />
         <div class="mentor-details">
-          <h3>Kaka Alamin</h3>
+          <h3>Coach 2: Kaka Alamin</h3>
           <p><strong>Years of Experience:</strong> 12</p>
           <p><strong>Type of Business:</strong> Farming</p>
           <p><strong>Occupations Held:</strong> Marketing lead</p>
         </div>
       </div>
 
+         <!-- Mentor Card 4 -->
+         <div class="mentor-card">
+          <img src="images/kodio.jpeg" alt="Kaka Alamin's photo" />
+          <div class="mentor-details">
+            <h3>Coach 3: Saleh Kodio</h3>
+            <p><strong>Years of Experience:</strong> 20</p>
+            <p><strong>Type of Business:</strong> Fashion</p>
+            <p><strong>Occupations Held:</strong> Founder& CEO</p>
+          </div>
+        </div>
+    
+
+
       <!-- Add more mentor cards as needed -->
     </section>
+  </section>
+
+  <!-- Success Stories Section -->
+  <section id="stories" class="stories">
+    <section class="success-stories">
+      <h2>Success Stories</h2>
+      <p>
+        Here are some of the success stories from entrepreneurs we've
+        mentored...
+      </p>
+      <!-- Success Story 1 -->
+      <div class="story-card">
+        <img src="images/karani.jpeg" alt="John Doe's photo" />
+        <div class="story-details">
+          <h3>Karani Denis</h3>
+          <p><strong>Period of Mentorship:</strong> 6 months</p>
+          <p>
+            <strong>Testimonial:</strong> "The mentorship I received was
+            invaluable. It transformed my business and helped me scale faster
+            than I thought possible."
+          </p>
+        </div>
+      </div>
+
+      <!-- Success Story 2 -->
+      <div class="story-card">
+        <img src="images/Ann.jpeg" alt="Jane Doe's photo" />
+        <div class="story-details">
+          <h3>Ann John</h3>
+          <p><strong>Period of Mentorship:</strong> 1 year</p>
+          <p>
+            <strong>Testimonial:</strong> "With the guidance from my mentor, I
+            was able to navigate challenges and successfully launch my
+            startup."
+          </p>
+        </div>
+      </div>
+
+      <!-- Success Story 3 -->
+      <div class="story-card">
+        <img src="images/chununi.jpeg" alt="Michael Brown's photo" />
+        <div class="story-details">
+          <h3>Chununi Arnu</h3>
+          <p><strong>Period of Mentorship:</strong> 9 months</p>
+          <p>
+            <strong>Testimonial:</strong> "This mentorship program has opened
+            doors for my career that I didn't even know existed."
+          </p>
+        </div>
+      </div>
+
+      <!-- Add more success stories as needed -->
+    </section>
+  </section>
+
 
     <!-- Book a session Section -->
-    <section id="book" class="book">
+
+    <section id="book" class="book-section">
       <h2>Book a session</h2>
-      <p>Details on how to book a session go here...</p>
+      <div class="h5">Follow these steps to book a mentorship with your preferred Mentor</div>
+      <div class="bookinginstructions">
+        <ol class="choices">
+          <li class="one">Connect your wallet using the Connect Wallet button</li>
+          <li class="two">Choose the Coach you prefer to book mentorship with. Go to mentors section and see coach numbers for each, and type it</li>
+          <li class="three">Press the Book session button and complete the booking by paying from your wallet</li>
+          <li class="four">Finally, check your booked session using the Get My Bookings button</li>
+        </ol>
+      </div>
     </section>
+    
+<div class="container">
+    <button id="connectButton" class="btn primary-btn">Connect Wallet</button>
 
-    <!-- Success Stories Section -->
-    <section id="stories" class="stories">
-      <section class="success-stories">
-        <h2>Success Stories</h2>
-        <p>
-          Here are some of the success stories from entrepreneurs we've
-          mentored...
-        </p>
-        <!-- Success Story 1 -->
-        <div class="story-card">
-          <img src="images/karani.jpeg" alt="John Doe's photo" />
-          <div class="story-details">
-            <h3>Karani Denis</h3>
-            <p><strong>Period of Mentorship:</strong> 6 months</p>
-            <p>
-              <strong>Testimonial:</strong> "The mentorship I received was
-              invaluable. It transformed my business and helped me scale faster
-              than I thought possible."
-            </p>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="sessionType">Session Type (0-3):</label>
+      <input type="number" id="sessionType" min="0" max="3" class="input-field"/>
+    </div>
 
-        <!-- Success Story 2 -->
-        <div class="story-card">
-          <img src="images/Ann.jpeg" alt="Jane Doe's photo" />
-          <div class="story-details">
-            <h3>Ann John</h3>
-            <p><strong>Period of Mentorship:</strong> 1 year</p>
-            <p>
-              <strong>Testimonial:</strong> "With the guidance from my mentor, I
-              was able to navigate challenges and successfully launch my
-              startup."
-            </p>
-          </div>
-        </div>
+    <button id="bookSession" class="btn success-btn">Book Session</button>
+    <button id="checkBalance" class="btn info-btn">Check Balance</button>
+    <button id="withdrawFunds" class="btn warning-btn">Withdraw Funds</button>
+    <button id="getUserBookings" class="btn">Get My Bookings</button>
+    <button id="getAllBookings" class="btn">Get All Bookings</button>
 
-        <!-- Success Story 3 -->
-        <div class="story-card">
-          <img src="images/chununi.jpeg" alt="Michael Brown's photo" />
-          <div class="story-details">
-            <h3>Chununi Arnu</h3>
-            <p><strong>Period of Mentorship:</strong> 9 months</p>
-            <p>
-              <strong>Testimonial:</strong> "This mentorship program has opened
-              doors for my career that I didn't even know existed."
-            </p>
-          </div>
-        </div>
+    <div id="messageContainer" class="message-box"></div>
+    <div id="bookingContainer" class="booking-box"></div>
+  </section>
+</div>
 
-        <!-- Add more success stories as needed -->
-      </section>
-    </section>
+</main>
 
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+    
     <!-- Footer -->
     <div class="footer">
       Decentralized mentorship booking application built on Ethereum Blockchain

@@ -1,0 +1,152 @@
+/* Basic styles for the navigation bar */
+nav {
+  background-color: blue; /* Dark background */
+  display: flex; /* Flexbox for horizontal alignment */
+  justify-content: space-around; /* Space items evenly */
+  border: 2px solid white; /* Single border around the nav */
+  padding: 10px; /* Add padding inside the nav */
+  box-sizing: border-box; /* Include padding and border in element's width */
+}
+/* Background image for the entire page */
+body {
+  background-image: url("images/back2.jpeg"); /* Replace with the path to your image */
+  background-size: cover; /* Makes sure the image covers the entire page */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+.footer {
+  background-color: blue;
+  display: flex;
+  border: 2px solid white;
+  color: white;
+}
+nav a {
+  color: white; /* White text */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  padding: 14px 20px; /* Padding around the links */
+  flex-grow: 1; /* Each link takes equal space */
+  border-left: 1px solid white; /* Dividers between items */
+}
+
+nav a:first-child {
+  border-left: none; /* Remove left border from the first link */
+}
+
+nav a:hover {
+  background-color: #ddd; /* Change background color on hover */
+  color: black; /* Change text color on hover */
+}
+
+/* Responsive behavior for small screens */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  nav a {
+    border-left: none; /* Remove left border for vertical stack */
+    border-top: 1px solid white; /* Add top border for separation */
+  }
+
+  nav a:first-child {
+    border-top: none; /* Remove top border from the first item */
+  }
+}
+
+/* Basic styling for the Mentors section */
+.mentors {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.mentors h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: blue;
+}
+
+/* Mentor card container */
+.mentor-card {
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; /* Align image and text */
+  justify-content: flex-start; /* Ensure the content starts from the left */
+}
+
+/* Mentor photo styling */
+.mentor-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Makes the image circular */
+  margin-right: 20px; /* Adds space between the image and text */
+  object-fit: cover; /* Ensures the image is properly contained */
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+/* Mentor details styling */
+.mentor-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.mentor-details p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+.mentor-details strong {
+  color: #000;
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 768px) {
+  .mentor-card {
+    max-width: 100%; /* Allow the card to take more space on larger screens */
+    justify-content: flex-start;
+  }
+}
+
+/* Success Stories section */
+.success-stories {
+  margin: 40px 0;
+}
+
+.story-card {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.story-card img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.story-details {
+  flex-grow: 1;
+}
+
+.story-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.story-details p {
+  margin: 5px 0;
+}

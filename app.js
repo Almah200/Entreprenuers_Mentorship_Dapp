@@ -1,4 +1,4 @@
-const contractAddress = "0x98d3384ebf3d5ac904852196898bae31a0ae9a05";
+const contractAddress = "0xd5242976b3f3d2abe5307f3eae4910eb03b366c9";
 const contractABI = [
   {
     inputs: [],
@@ -211,6 +211,70 @@ document
   .getElementById("connectButton")
   .addEventListener("click", connectWallet);
 
+/* Added wallet status */
+
+// Connect to the provider and update UI
+async function connectWallet() {
+  try {
+    // Request account access
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+
+    // Initialize provider, signer, and contract
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+    contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+    // Update the button text to reflect the connection state
+    document.getElementById("connectButton").innerText = "Wallet Connected";
+    console.log("Wallet connected");
+  } catch (error) {
+    console.error("Failed to connect wallet:", error);
+  }
+}
+
+// Check if wallet is already connected when page loads
+async function checkWalletConnection() {
+  if (typeof window.ethereum !== "undefined") {
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    // Fetch accounts from the provider
+    const accounts = await provider.send("eth_accounts", []);
+
+    if (accounts.length > 0) {
+      // If there are accounts, wallet is connected
+      signer = provider.getSigner();
+      contract = new ethers.Contract(contractAddress, contractABI, signer);
+      document.getElementById("connectButton").innerText = "Wallet Connected";
+    } else {
+      // No accounts, wallet is not connected
+      document.getElementById("connectButton").innerText = "Connect Wallet";
+    }
+  } else {
+    // MetaMask or another wallet extension is not installed
+    document.getElementById("connectButton").innerText = "Install MetaMask";
+  }
+}
+
+// Listen for account changes and update UI accordingly
+if (window.ethereum) {
+  window.ethereum.on("accountsChanged", function (accounts) {
+    if (accounts.length > 0) {
+      document.getElementById("connectButton").innerText = "Wallet Connected";
+    } else {
+      document.getElementById("connectButton").innerText = "Connect Wallet";
+    }
+  });
+}
+
+// Attach event listener to the connect button
+document
+  .getElementById("connectButton")
+  .addEventListener("click", connectWallet);
+
+// Check wallet connection when the page loads
+window.addEventListener("load", checkWalletConnection);
+/* */
+
 async function bookSession() {
   clearDisplay(); // Clear previous messages and bookings
 
@@ -365,3 +429,5 @@ function clearDisplay() {
   document.getElementById("messageContainer").innerHTML = "";
   document.getElementById("bookingContainer").innerHTML = "";
 }
+
+// /* javascript added code to better display*/

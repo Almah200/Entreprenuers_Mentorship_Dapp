@@ -1,4 +1,4 @@
-const contractAddress = "0xd5242976b3f3d2abe5307f3eae4910eb03b366c9";
+const contractAddress = "0x51b4a241b5b44a1fe27bbbe13642641dd46b818a";
 const contractABI = [
   {
     inputs: [],
@@ -16,8 +16,8 @@ const contractABI = [
       },
       {
         indexed: false,
-        internalType: "enum MentoringAndCoaching.CoachChoice",
-        name: "coachChoice",
+        internalType: "enum Mentorship.MentorChoice",
+        name: "mentorChoice",
         type: "uint8",
       },
       {
@@ -26,21 +26,14 @@ const contractABI = [
         name: "amount",
         type: "uint256",
       },
-    ],
-    name: "BookingMade",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: false,
         internalType: "uint256",
-        name: "CoachChoiceIndex",
+        name: "timestamp",
         type: "uint256",
       },
     ],
-    name: "CoachChoiceOutOfRange",
+    name: "BookingMade",
     type: "event",
   },
   {
@@ -60,6 +53,19 @@ const contractABI = [
       },
     ],
     name: "InvalidPaymentAmount",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "mentorChoiceIndex",
+        type: "uint256",
+      },
+    ],
+    name: "MentorChoiceOutOfRange",
     type: "event",
   },
   {
@@ -89,8 +95,8 @@ const contractABI = [
             type: "address",
           },
           {
-            internalType: "enum MentoringAndCoaching.CoachChoice",
-            name: "coachChoice",
+            internalType: "enum Mentorship.MentorChoice",
+            name: "mentorChoice",
             type: "uint8",
           },
           {
@@ -98,8 +104,13 @@ const contractABI = [
             name: "amount",
             type: "uint256",
           },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
         ],
-        internalType: "struct MentoringAndCoaching.Booking[]",
+        internalType: "struct Mentorship.Booking[]",
         name: "",
         type: "tuple[]",
       },
@@ -138,8 +149,8 @@ const contractABI = [
             type: "address",
           },
           {
-            internalType: "enum MentoringAndCoaching.CoachChoice",
-            name: "coachChoice",
+            internalType: "enum Mentorship.MentorChoice",
+            name: "mentorChoice",
             type: "uint8",
           },
           {
@@ -147,8 +158,13 @@ const contractABI = [
             name: "amount",
             type: "uint256",
           },
+          {
+            internalType: "uint256",
+            name: "timestamp",
+            type: "uint256",
+          },
         ],
-        internalType: "struct MentoringAndCoaching.Booking[]",
+        internalType: "struct Mentorship.Booking[]",
         name: "",
         type: "tuple[]",
       },
@@ -172,7 +188,7 @@ const contractABI = [
   {
     inputs: [
       {
-        internalType: "enum MentoringAndCoaching.CoachChoice",
+        internalType: "enum Mentorship.MentorChoice",
         name: "",
         type: "uint8",
       },
@@ -411,14 +427,14 @@ function displayMessage(message, type) {
   messageContainer.innerHTML = `<p class="${type}">${message}</p>`;
 }
 
-// Helper function to display bookings
 function displayBookings(title, bookings) {
   const bookingContainer = document.getElementById("bookingContainer");
   let html = `<h3>${title}</h3><ul>`;
   bookings.forEach((booking) => {
-    html += `<li>User: ${booking.user}, Session Type: ${
-      booking.sessionType
-    }, Amount: ${ethers.utils.formatEther(booking.amount)} ETH</li>`;
+    const timestamp = new Date(booking.timestamp * 1000).toLocaleString(); // Convert timestamp to readable date
+    html += `<li>User: ${booking.user}, Amount: ${ethers.utils.formatEther(
+      booking.amount
+    )} ETH, Time: ${timestamp}</li>`;
   });
   html += "</ul>";
   bookingContainer.innerHTML = html;

@@ -1,6 +1,6 @@
 /* Basic styles for the navigation bar */
 nav {
-  background-color: blue; /* Dark background */
+  background-color: rgb(0, 132, 255); /* Dark background */
   display: flex; /* Flexbox for horizontal alignment */
   justify-content: space-around; /* Space items evenly */
   border: 2px solid white; /* Single border around the nav */
@@ -15,7 +15,7 @@ body {
   background-attachment: fixed; /* Keeps the background fixed when scrolling */
 }
 .footer {
-  background-color: blue;
+  background-color: rgb(0, 174, 255);
   display: flex;
   border: 2px solid white;
   color: white;
@@ -64,7 +64,7 @@ nav a:hover {
 .mentors h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: blue;
+  color: rgb(0, 128, 255);
 }
 
 /* Mentor card container */

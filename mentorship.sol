@@ -15,7 +15,7 @@ contract Mentorship {
         address user;
         MentorChoice mentorChoice;
         uint256 amount;
-        uint256 timestamp;
+        uint256 timestamp; // Timestamp added for each booking
     }
 
     // Mapping from user address to their bookings
@@ -32,7 +32,7 @@ contract Mentorship {
         address indexed user,
         MentorChoice mentorChoice,
         uint256 amount,
-        uint256 timestamp
+        uint256 timestamp // Emit timestamp with event
     );
     event InvalidPaymentAmount(address indexed user, uint256 amount);
     event MentorChoiceOutOfRange(uint256 mentorChoiceIndex);
@@ -51,11 +51,11 @@ contract Mentorship {
     receive() external payable {
         require(msg.sender != owner, "Owner cannot send Ether to the contract");
 
-        // Validate the payment amount
         bool validAmount = false;
         MentorChoice mentorChoice;
         uint256 amount = msg.value;
 
+        // Check for valid session price
         for (uint i = 0; i < 4; i++) {
             if (amount == sessionPrices[MentorChoice(i)]) {
                 mentorChoice = MentorChoice(i);
@@ -66,17 +66,17 @@ contract Mentorship {
 
         require(validAmount, "Invalid payment amount");
 
-        // Record the booking
+        // Record the booking with timestamp
         Booking memory newBooking = Booking(
             msg.sender,
             mentorChoice,
             amount,
             block.timestamp
-        ); // Capture timestamp
+        );
         userBookings[msg.sender].push(newBooking);
         allBookings.push(newBooking);
 
-        // Emit an event with the timestamp
+        // Emit event with timestamp
         emit BookingMade(msg.sender, mentorChoice, amount, block.timestamp);
     }
 
@@ -84,11 +84,11 @@ contract Mentorship {
     fallback() external payable {
         require(msg.sender != owner, "Owner cannot send Ether to the contract");
 
-        // Validate the payment amount
         bool validAmount = false;
         MentorChoice mentorChoice;
         uint256 amount = msg.value;
 
+        // Check for valid session price
         for (uint i = 0; i < 4; i++) {
             if (amount == sessionPrices[MentorChoice(i)]) {
                 mentorChoice = MentorChoice(i);
@@ -99,17 +99,17 @@ contract Mentorship {
 
         require(validAmount, "Invalid payment amount");
 
-        // Record the booking
+        // Record the booking with timestamp
         Booking memory newBooking = Booking(
             msg.sender,
             mentorChoice,
             amount,
             block.timestamp
-        ); // Capture timestamp
+        );
         userBookings[msg.sender].push(newBooking);
         allBookings.push(newBooking);
 
-        // Emit an event with the timestamp
+        // Emit event with timestamp
         emit BookingMade(msg.sender, mentorChoice, amount, block.timestamp);
     }
 
@@ -125,14 +125,14 @@ contract Mentorship {
         return address(this).balance;
     }
 
-    // Get all bookings for a specific address
+    // Get all bookings for a specific address, including timestamp
     function getUserBookings(
         address user
     ) external view returns (Booking[] memory) {
         return userBookings[user];
     }
 
-    // Get all bookings in the contract
+    // Get all bookings in the contract, including timestamp
     function getAllBookings() external view returns (Booking[] memory) {
         return allBookings;
     }
